@@ -1,0 +1,16 @@
+% Calculate z-score from baseline
+
+
+f = 3;
+mua         = zeros(size(dat)); 
+for c = 1:size(fdat{f},1)
+
+    
+dat  = fdat{f}(c,:);  
+[zbas mu sig] = zscore(fbdat{f}(c,:)); 
+
+
+mua(c,:)    = (dat - mu) > 3*sig;
+
+end
+

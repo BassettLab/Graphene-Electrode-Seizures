@@ -1,0 +1,74 @@
+% Housekeeping
+%==========================================================================
+fs  = filesep; 
+F   = grp_housekeeping; 
+
+%% Use baseline to calculate Standard Error Map over voxels
+%--------------------------------------------------------------------------
+BL      = [F.data fs 'Graphene Imaging' fs 'baseline1'];
+tiflist = dir([BL fs '*.tif']);
+tiflist = {tiflist.name}; 
+
+clear btif
+samps   = 1000; 
+tids    = fix(linspace(1,length(tiflist),samps)); 
+for t = 1:samps
+    btif(t,:,:) = imread([BL fs tiflist{tids(t)}]); 
+end
+
+% Calculate standard error map
+%--------------------------------------------------------------------------
+semmap = squeeze(std(single(btif),1)) / sqrt(size(btif,1));
+avgmap = squeeze(mean(single(btif),1)); 
+save([F.data fs 'SEM_map.mat'], 'semmap'); 
+save([F.data fs 'AVG_map.mat'], 'avgmap'); 
+
+%% Detect pixels that are above baseline threshold (from a t-map)
+%--------------------------------------------------------------------------
+SZ      = [F.data fs 'Graphene Imaging' fs 'bath1']; 
+tiflist = dir([SZ fs '*.tif']); 
+tiflist = {tiflist.name}; 
+load([F.data fs 'SEM_map.mat']); 
+load([F.data fs 'AVG_map.mat']); 
+ 
+% Load tiffs and make the tmap
+%--------------------------------------------------------------------------
+clear tif ttif
+samps   = length(tiflist); 
+tids    = fix(linspace(1,length(tiflist),samps)); 
+for t = 1:samps
+    if mod(t,250) == 0, disp(['Processed image ' num2str(t) ' of ' num2str(samps) ' - ' datestr(datetime(now,'ConvertFrom','datenum'))]);   end
+    tif         = imread([SZ fs tiflist{tids(t)}]); 
+    ttif(t,:,:) = (single(tif) - avgmap)./semmap; 
+end
+%% Loop through tmaps and apply threshold to detect edge
+%--------------------------------------------------------------------------
+llim = 350;  % <-- This threshold is pretty arbitrary atm
+gflt = 15;   % <-- width of the gaussian image filter, also arbitrary(ish)
+
+clear binm edgm
+for t = 1:size(ttif,1)
+    if mod(t,250) == 0, disp(['Processed image ' num2str(t) ' of ' num2str(samps) ' - ' datestr(datetime(now,'ConvertFrom','datenum'))]);   end
+    SM = imgaussfilt(squeeze(ttif(t,:,:)), 15); 
+    BN = zeros(size(SM));   BN(SM > llim) = 1; 
+    ED = logical(edge(BN)); 
+    BN = logical(BN); 
+    
+    binm(t,:,:) = BN;
+    edgm(t,:,:) = ED; 
+end
+
+% Save edge and binary maps
+%--------------------------------------------------------------------------
+F.maps = [F.base fs '02 - Analysis' fs 'Wave map']; 
+save([F.maps fs 'Binary.mat'], 'binm', '-v7.3'); 
+save([F.maps fs 'Edge.mat'], 'edgm', '-v7.3'); 
+
+% Plot example output
+%--------------------------------------------------------------------------
+for t = 1:50:size(edgm,1)
+    subplot(1,2,1), imagesc(squeeze(ttif(t,:,:)), [100 1000]); 
+    subplot(1,2,2), imagesc(squeeze(edgm(t,:,:)));
+    drawnow()
+    pause(0.1)
+end
