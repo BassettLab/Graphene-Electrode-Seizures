@@ -1,9 +1,9 @@
+function C = grp_electrophys(F)
 % Housekeeping and accessing IEEG portal data
 %--------------------------------------------------------------------------
-F       = grp_housekeeping;
 fs      = filesep; 
-sess    = IEEGSession('10_18_18_bath1', 'roschkoenig', 'ros_ieeglogin.bin');
-sesb    = IEEGSession('10_18_18_baseline', 'roschkoenig', 'ros_ieeglogin.bin'); 
+sess    = IEEGSession('10_18_18_bath1', 'roschkoenig', F.pwdfile);
+sesb    = IEEGSession('10_18_18_baseline', 'roschkoenig', F.pwdfile); 
 
 % Specify experiment details
 %--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ chany  = [148, 144, 140, 135;
 nchans = length(chans(:)); 
 nsamps = 60 * 14 * Fs;       
 
-%% Specify channel details
+% Specify channel details
 %--------------------------------------------------------------------------
 clear C
 k = 0; 
@@ -36,16 +36,17 @@ for r = 1:size(chans,1)
 for c = 1:size(chans,2)
     
     k = k + 1;
-    id = find(~cellfun(@isempty, regexp(chlabs(:,1), num2str(chans(r,c), '%02.f'))));
+    id       = find(~cellfun(@isempty, regexp(chlabs(:,1), num2str(chans(r,c), '%02.f'))));
     C(k).row = r;
     C(k).col = c;
-    C(k).id  = id(1);
+    C(k).oi  = id(1);       % original id (i.e. index in chanlist)
+    C(k).id  = chans(r,c); 
     C(k).x   = chanx(r,c); 
     C(k).y   = chany(r,c); 
     
     % Load two minutes baseline and derive z-score
     %----------------------------------------------------------------------
-    C(k).bas = sesb.data.getvalues(10000:20000, C(k).id); 
+    C(k).bas = sesb.data.getvalues(10000:20000, C(k).oi); 
 end
 end
 
@@ -62,7 +63,7 @@ tvec   = tvec(toload);
 %% Load data into the channel spec variable
 %--------------------------------------------------------------------------
 for c = 1:length(C)
-    C(c).dat = sess.data.getvalues(1:nsamps, C(c).id); 
+    C(c).dat = sess.data.getvalues(1:nsamps, C(c).oi); 
 end
 
 fbp{1} = [1 40];
@@ -88,3 +89,15 @@ for f = 1:length(fbp)
     fbdat{f}    = ft_preproc_bandpassfilter(nbdat, Fs, fbp{f}, 16000, 'firws'); 
 end
 
+% Reattach filtered data to the Channel object
+%--------------------------------------------------------------------------
+for f = 1:length(fdat)
+for c = 1:length(C)
+    C(c).filt{f} = fdat{f}(c,:); 
+    C(c).filb{f} = fbdat{f}(c,:); 
+end
+end
+
+% Save everything in one massive file
+%--------------------------------------------------------------------------
+save([F.data fs 'Electrophysiology' fs 'Channel_Data.mat'], 'C', '-v7.3'); 

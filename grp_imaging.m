@@ -1,7 +1,9 @@
+function F = grp_imaging(F)
+
 % Housekeeping
 %==========================================================================
-fs  = filesep; 
-F   = grp_housekeeping; 
+fs  = filesep;  
+doplt = 0; 
 
 %% Use baseline to calculate Standard Error Map over voxels
 %--------------------------------------------------------------------------
@@ -56,6 +58,7 @@ for t = 1:size(ttif,1)
     
     binm(t,:,:) = BN;
     edgm(t,:,:) = ED; 
+    smtm(t,:,:) = SM; 
 end
 
 % Save edge and binary maps
@@ -63,12 +66,15 @@ end
 F.maps = [F.base fs '02 - Analysis' fs 'Wave map']; 
 save([F.maps fs 'Binary.mat'], 'binm', '-v7.3'); 
 save([F.maps fs 'Edge.mat'], 'edgm', '-v7.3'); 
+save([F.maps fs 'Smooth.mat'], 'smtm', '-v7.3'); 
 
 % Plot example output
 %--------------------------------------------------------------------------
+if doplt
 for t = 1:50:size(edgm,1)
     subplot(1,2,1), imagesc(squeeze(ttif(t,:,:)), [100 1000]); 
     subplot(1,2,2), imagesc(squeeze(edgm(t,:,:)));
     drawnow()
     pause(0.1)
+end
 end

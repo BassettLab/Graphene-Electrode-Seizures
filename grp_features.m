@@ -1,8 +1,8 @@
 % Feature extractor
 %--------------------------------------------------------------------------
-ictspike = 0;   % Detects ictal spikes and their amplitude
-gamcoupl = 0;   % Calculates zero-lag correlation in the high gamma band
-imgfeatr = 0;   % Pulls image features
+ictspike = 1;   % Detects ictal spikes and their amplitude
+gamcoupl = 1;   % Calculates zero-lag correlation in the high gamma band
+imgfeatr = 1;   % Pulls image features
 
 % Ictal spike frequency and amplitude
 %--------------------------------------------------------------------------
