@@ -8,7 +8,7 @@ disp('Calculating proximity to edge');
 for e = 1:size(edgm,1)
     sme = imgaussfilt(squeeze(double(edgm(e,:,:))), 20);
     for c = 1:length(C)
-        IMG(c).eprox(e) = sme(C(c).y, C(c).x);  %% ALERT row/col maps to * y * / * x * I got this wrong many times
+        IMG(c).eprox(e) = sme(C(c).y, C(c).x);  %% ALERT row/col maps to *y* / *x* I got this wrong many times
 	end
 end
 

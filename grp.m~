@@ -53,11 +53,10 @@ end
 
 % Plotting functions (use the if statements as toggles)
 %==========================================================================
-if 0,   grp_plot_nmf(W,H,C,trange,fastrange,fset,fid);          end
-if 0,   grp_plot_traj(F,traneg,H,wsort);                        end
-if 0,   grp_plot_spike(C, H, wsort, fastrange, Fs, 9);          end
-if 0,   grp_plot_tsrs(C, IMG, trange, fastrange, Fs, dolong);   end
-if 0,   grp_plot_edgemap(F, trange);                            end
+if 0,   grp_plot_nmf(W,H,C,trange,fastrange,fset,fid);      end
+if 0,   grp_plot_traj(F,traneg,H,wsort);                    end
+if 0,   grp_plot_spike(C, H, wsort, fastrange, Fs, 9);      end
+if 0,   grp_plot_tsrs(C, IMG, trange, fastrange, Fs, dolong);
 
 % GRAVEYARD
 % 
