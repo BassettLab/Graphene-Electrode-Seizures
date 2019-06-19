@@ -1,0 +1,27 @@
+% function grp_plot_modcorr(FMT,fet,fid)
+
+% Plot correlation between modalities
+%--------------------------------------------------------------------------
+lo = FMT(fid == find(strcmp(fset, 'lopow')),:);
+am = FMT(fid == find(strcmp(fset, 'ampl')),:); 
+cols = flip(cbrewer('div', 'RdYlBu', size(lo,2))); 
+
+
+%% Make 2D Histogram
+h = hist3([lo(:),am(:)],[100,100]);
+sc = 10; 
+m = zeros(size(h)*sc); 
+for r = 1:size(h,1)
+for c = 1:size(h,2)
+    m([1:sc]+(r-1)*sc, [1:sc]+(c-1)*sc)
+end
+end
+
+
+%%
+
+for c = 1:size(lo,1)
+    scatter(lo(c,:), am(c,:), 200, cols, 'filled', 'markerfacealpha', .02), hold on;
+    
+end
+
