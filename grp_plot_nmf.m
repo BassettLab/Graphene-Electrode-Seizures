@@ -1,5 +1,5 @@
-function grp_plot_nmf(W,H,C,trange,fastrange,fset,fid)
-
+function grp_plot_nmf(W,H,C,trange,fastrange,fset,fid,wsort)
+figure
 % Sort the loadings by a temporal sequence 
 %==========================================================================
 % Examine weights of the onset factors
@@ -11,20 +11,6 @@ clear tweight
 for h = 1:size(H,1)
     tweight(h) = sum(H(h,:) .* [1:size(H,2)]) / sum(H(h,:)); 
 end
-
-% Find the time point with peak loading on factor and sort by that
-%--------------------------------------------------------------------------
-clear smH h
-
-for h = 1:size(H,1)
-    smH(h,:)    = smooth(H(h,:), 300);
-    [pks ids]   = findpeaks(double(smH(h,:)));
-    [val mid]   = max(pks);
-    id(h)       = ids(mid); 
-%     plot(smH(h,:), 'color', cols(h,:));     hold on
-%     plot([id(h), id(h)], [0, pks(mid)], 'color', cols(h,:)); 
-end
-[std wsort] = sort(id);
 
 subplot(length(Featid)+2,wr,[1:wr] + wr*(length(Featid)+1))
     plot(C(13).dat(fastrange(1):fastrange(end)))

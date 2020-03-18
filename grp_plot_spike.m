@@ -1,5 +1,5 @@
 function grp_plot_spike(C, H, wsort, fastrange, Fs,c)
-
+figure
 ts      = 1:50:4500; 
 cols    = cbrewer('div', 'Spectral', length(ts));
 ccols   = cbrewer('qual', 'Dark2', 12); 

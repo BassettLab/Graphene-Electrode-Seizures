@@ -1,0 +1,54 @@
+Article,FA,LA,Title,SelfCite,CitationKey
+1,Elliot,Catherine,The ictal wavefront is the spatiotemporal source of discharges during spontaneous human seizures,N,Smith2016
+2,Tony,Mark,Long-Term Optical Access to an Estimated One Million Neurons in the Live Mouse Cortex,N,Kim2016
+3,LE,M,Slow Spatial Recruitment of Neocortex during Secondarily Generalized Seizures and Its Relation to Surgical Outcome,N,Martinet2015
+4,Elliot,Catherine,Dual mechanisms of ictal high frequency oscillations in rhythmic onset seizures,N,Smith2020
+5,Nicholas,Karel,A large field of view two-photon mesoscope with subcellular resolution for in vivo imaging,N,Sofroniew2016
+6,Carsen,Kenneth,Spontaneous behaviors drive multidimensional brainwide activity,N,Stringer2019
+7,Ofer,Karl,Optogenetics in Neural Systems,N,Yizhar2011
+8,Sarah,Rosa,Spatially clustered neuronal assemblies comprise the microstructure of synchrony in chronically epileptic networks,N,FeldtMuldoon
+9,Sarah,Rosa,GABAergic inhibition shapes interictal dynamics in awake epileptic mice,N,Muldoon2015
+10,Tristan,Peyman,Breakdown of spatial coding and interneuron synchronization in epileptic mice,N,Shuman2020
+11,Benjamin,Mark,High-speed miniaturized fluorescence microscopy in freely moving mice.,N,Flusberg2008
+12,Takashi,Alberto,Photoelectric artefact from optogenetics and imaging on microelectrodes and bioelectronics: New Challenges and Opportunities.,N,Kozai2015
+13,Emre,Rainer,Reconstruction of firing rate changes across neuronal populations by temporally deconvolved Ca2+ imaging,N,Yaksi2006
+14,Ludmyla,Joao,Animal models of epilepsy: use and limitations.,N,Kandratavicius2014
+15,Daniel,David,Functional imaging of hippocampal place cells at cellular resolution during virtual navigation,N,Dombeck2010
+17,DongWook,Justin,Graphene-based carbon-layered electrode array technology for neural imaging and optogenetic applications.,N,Park2014
+18,Yi,Hui,Transparent arrays of bilayer-nanomesh microelectrodes for simultaneous electrophysiology and two-photon imaging in the brain,N,Qiang2018
+19,Martin,Duygu,Deep 2-photon imaging and artifact-free optogenetics through transparent graphene microelectrode arrays,N,Thunemann2018
+20,Maeike,Jean,High-frequency oscillations as a new biomarker in epilepsy,N,Zijlmans2012
+21,Anatol,Jerome,High-frequency Oscillations after Status Epilepticus: Epileptogenesis and Seizure Genesis,N,Bragin2004
+22,Matthias,Andreas,Temporal and spatial characteristics of high frequency oscillations as a new biomarker in epilepsy,N,Dumpelmann2015
+23,Jonathan,Brian,Flexible foldable actively multiplexed high-density electrode array for mapping brain activity in vivo.,N,Viventi2011
+24,Brian,Catherine,Ex vivo multi-electrode analysis reveals spatiotemporal dynamics of ictal behavior at the infiltrated margin of glioma,N,Gill2020
+25,Catherine,Andrew,Evidence of an inhibitory restraint of seizure activity in humans,N,Schevon2012a
+26,Ankit,Danielle,Subgraphs of functional brain networks identify dynamical constraints of cognitive control,N,Khambhati2018
+27,Yi,JingGang,Progress and Challenges in Transfer of Large-Area Graphene Films,N,Chen2016
+28,Yichen,Duygu,Ultralow Impedance Graphene Microelectrodes with High Optical Transparency for Simultaneous Deep Two-Photon Imaging in Transgenic Mice,N,Lu2018
+29,DongWook,Zhenqiang,Fabrication and utility of a transparent graphene neural electrode array for electrophysiology in vivo imaging and optogenetics,N,Park2016
+30,Lorenzo,John,Stable efficient p-type doping of graphene by nitric acid,N,DArsie2016
+31,Dion,Gyorgy,NeuroGrid: recording action potentials from the surface of the brain,N,Khodagholy2015
+32,Changgu,James,Measurement of the elastic properties and intrinsic strength of monolayer graphene.,N,Lee2008
+33,Chuanfang,Valeria,Transparent Flexible and Conductive 2D Titanium Carbide (MXene) Films with High Volumetric Capacitance,N,Zhang2017
+34,Marina,Andre,Solution-processed titanium carbide MXene films examined as highly transparent conductors,N,Mariano2016
+36,Wilson,Sydney,Single-neuron dynamics in human focal epilepsy,N,Truccolo2011
+37,Catherine,Andrew,Multiscale recordings reveal the dynamic spatial structure of human seizures,N,Schevon2019
+38,Catherine,Andrew,Evidence of an inhibitory restraint of seizure activity in humans,N,Schevon2012
+39,Shennan,Catherine,Ictal high frequency oscillations distinguish two types of seizure territories in humans.,N,Weiss2013
+40,Michael,Rafael,Acute Focal Seizures Start As Local Synchronizations of Neuronal Ensembles,N,Wenzel2019
+41,Matt,Greg,Microseizures and the spatiotemporal scales of human partial epilepsy,N,Stead2010
+42,Jingu,Haesun,Toward Faster Nonnegative Matrix Factorization : A New Algorithm and Comparisons 2 Alternating Nonnegative Least Squares Framework for NMF,N,Kim2008
+43,Hyunsoo,Haesun,Sparse non-negative matrix factorizations via alternating non-negativity-constrained least squares for microarray data analysis,N,Kim2007
+44,Stefan,Karl,Variational Bayesian inversion of the equivalent current dipole model in EEG/MEG,N,Kiebel2008
+45,Patrick,Fabrice,Neural Mass Activity Bifurcations and Epilepsy,N,Chauvel2011
+46,Rich,Adrienne,Dimensionality reduction in neuroscience,N,Pang2016
+47,Daniel,H,Learning the parts of objects by non-negative matrix factorization,N,Lee1999
+49,Timothee,Wilson,Predicting the spatiotemporal diversity of seizure propagation and termination in human focal epilepsy,N,Proix2018
+50,Ankit,Danielle,Beyond modularity: Fine-scale mechanisms and rules for brain network reconfiguration,N,Khambhati2017
+51,Eric,Eric,Brain-responsive neurostimulation in patients with medically intractable mesial temporal lobe epilepsy,N,Geller2017
+52,Ann,Danielle,Dynamic Graph Metrics: Tutorial Toolbox and Tale,N,Sizemore2017
+53,Lucy,Danielle,Evolution of brain network dynamics in neurodevelopment,N,Chai2017
+54,Robert,Vincent,Optogenetic approaches to treat epilepsy,N,Wykes2016
+55,Edward,Andrew,Single unit action potentials in humans and the effect of seizure activity,N,Merricks2015
+56,Robert,Dimitri,Optogenetic and potassium channel gene therapy in a rodent model of focal neocortical epilepsy.,N,Wykes2012

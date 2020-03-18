@@ -1,5 +1,5 @@
 function grp_plot_edgemap(F, trange) 
-
+figure
 fs = filesep;
 
 % Load detected edges

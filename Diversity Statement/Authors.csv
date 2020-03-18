@@ -1,0 +1,61 @@
+,Article,FA,LA,Title,SelfCite,CitationKey,FA_bin,FA_conf,LA_bin,LA_conf,GendCat
+1,2,Anatol,Jerome,High-frequency Oscillations after Status Epilepticus: Epileptogenesis and Seizure Genesis,N,Bragin2004,M,97,M,99,MM
+2,3,Lucy,Danielle,Evolution of brain network dynamics in neurodevelopment,N,Chai2017,W,98,W,96,WW
+3,4,Patrick,Fabrice,Neural Mass Activity Bifurcations and Epilepsy,N,Chauvel2011,M,99,M,98,MM
+4,5,Yi,JingGang,Progress and Challenges in Transfer of Large-Area Graphene Films,N,Chen2016,W,61,M,100,WM
+5,6,Lorenzo,John,Stable efficient p-type doping of graphene by nitric acid,N,DArsie2016,M,99,M,99,MM
+6,7,Daniel,David,Functional imaging of hippocampal place cells at cellular resolution during virtual navigation,N,Dombeck2010,M,99,M,99,MM
+7,8,Matthias,Andreas,Temporal and spatial characteristics of high frequency oscillations as a new biomarker in epilepsy,N,Dumpelmann2015,M,99,M,99,MM
+8,9,Sarah,Rosa,Spatially clustered neuronal assemblies comprise the microstructure of synchrony in chronically epileptic networks,N,FeldtMuldoon,W,98,W,98,WW
+9,10,Benjamin,Mark,High-speed miniaturized fluorescence microscopy in freely moving mice.,N,Flusberg2008,M,99,M,100,MM
+10,11,Eric,Eric,Brain-responsive neurostimulation in patients with medically intractable mesial temporal lobe epilepsy,N,Geller2017,M,99,M,99,MM
+11,12,Brian,Catherine,Ex vivo multi-electrode analysis reveals spatiotemporal dynamics of ictal behavior at the infiltrated margin of glioma,N,Gill2020,M,99,W,98,MW
+12,13,Ludmyla,Joao,Animal models of epilepsy: use and limitations.,N,Kandratavicius2014,W,97,M,99,WM
+13,14,Ankit,Danielle,Beyond modularity: Fine-scale mechanisms and rules for brain network reconfiguration,N,Khambhati2017,M,100,W,96,MW
+14,15,Ankit,Danielle,Subgraphs of functional brain networks identify dynamical constraints of cognitive control,N,Khambhati2018,M,100,W,96,MW
+15,16,Dion,Gyorgy,NeuroGrid: recording action potentials from the surface of the brain,N,Khodagholy2015,M,92,M,94,MM
+16,17,Stefan,Karl,Variational Bayesian inversion of the equivalent current dipole model in EEG/MEG,N,Kiebel2008,M,98,M,98,MM
+17,18,Hyunsoo,Haesun,Sparse non-negative matrix factorizations via alternating non-negativity-constrained least squares for microarray data analysis,N,Kim2007,M,89,W,90,MW
+18,19,Jingu,Haesun,Toward Faster Nonnegative Matrix Factorization : A New Algorithm and Comparisons 2 Alternating Nonnegative Least Squares Framework for NMF,N,Kim2008,M,95,W,90,MW
+19,20,Tony,Mark,Long-Term Optical Access to an Estimated One Million Neurons in the Live Mouse Cortex,N,Kim2016,M,99,M,100,MM
+20,21,Takashi,Alberto,Photoelectric artefact from optogenetics and imaging on microelectrodes and bioelectronics: New Challenges and Opportunities.,N,Kozai2015,M,99,M,99,MM
+21,23,Changgu,James,Measurement of the elastic properties and intrinsic strength of monolayer graphene.,N,Lee2008,U,50,M,99,MM
+22,24,Yichen,Duygu,Ultralow Impedance Graphene Microelectrodes with High Optical Transparency for Simultaneous Deep Two-Photon Imaging in Transgenic Mice,N,Lu2018,U,52,W,96,MW
+23,25,Marina,Andre,Solution-processed titanium carbide MXene films examined as highly transparent conductors,N,Mariano2016,W,98,M,97,WM
+24,26,LouisElliot,Mark,Slow Spatial Recruitment of Neocortex during Secondarily Generalized Seizures and Its Relation to Surgical Outcome,N,Martinet2015,M ,0,M,100,MM
+25,27,Edward,Andrew,Single unit action potentials in humans and the effect of seizure activity,N,Merricks2015,M,99,M,99,MM
+26,28,Sarah,Rosa,GABAergic inhibition shapes interictal dynamics in awake epileptic mice,N,Muldoon2015,W,98,W,98,WW
+27,29,Rich,Adrienne,Dimensionality reduction in neuroscience,N,Pang2016,M,0,W,99,MW
+28,30,DongWook,Zhenqiang,Fabrication and utility of a transparent graphene neural electrode array for electrophysiology in vivo imaging and optogenetics,N,Park2016,M,100,M,100,MM
+29,31,DongWook,Justin,Graphene-based carbon-layered electrode array technology for neural imaging and optogenetic applications.,N,Park2014,M,100,M,98,MM
+30,32,Yi,Hui,Transparent arrays of bilayer-nanomesh microelectrodes for simultaneous electrophysiology and two-photon imaging in the brain,N,Qiang2018,M ,61,M,52,MM
+31,33,Catherine,Andrew,Multiscale recordings reveal the dynamic spatial structure of human seizures,N,Schevon2019,W,98,M,99,WM
+32,34,Catherine,Andrew,Evidence of an inhibitory restraint of seizure activity in humans,N,Schevon2012a,W,98,M,99,WM
+33,35,Catherine,Andrew,Evidence of an inhibitory restraint of seizure activity in humans,N,Schevon2012,W,98,M,99,WM
+34,36,Tristan,Peyman,Breakdown of spatial coding and interneuron synchronization in epileptic mice,N,Shuman2020,M,97,M,98,MM
+35,37,Ann,Danielle,Dynamic Graph Metrics: Tutorial Toolbox and Tale,N,Sizemore2017,W,97,W,96,WW
+36,38,Elliot,Catherine,The ictal wavefront is the spatiotemporal source of discharges during spontaneous human seizures,N,Smith2016,M,98,W,98,MW
+37,39,Elliot,Catherine,Dual mechanisms of ictal high frequency oscillations in rhythmic onset seizures,N,Smith2020,M,98,W,98,MW
+38,40,Nicholas,Karel,A large field of view two-photon mesoscope with subcellular resolution for in vivo imaging,N,Sofroniew2016,M,100,M,96,MM
+39,41,Matt,Greg,Microseizures and the spatiotemporal scales of human partial epilepsy,N,Stead2010,M,100,M,99,MM
+40,42,Carsen,Kenneth,Spontaneous behaviors drive multidimensional brainwide activity,N,Stringer2019,M,70,M,99,MM
+41,43,Martin,Duygu,Deep 2-photon imaging and artifact-free optogenetics through transparent graphene microelectrode arrays,N,Thunemann2018,M,98,W,96,MW
+42,44,Wilson,Sydney,Single-neuron dynamics in human focal epilepsy,N,Truccolo2011,M,98,W,70,MW
+43,46,Jonathan,Brian,Flexible foldable actively multiplexed high-density electrode array for mapping brain activity in vivo.,N,Viventi2011,M,99,M,99,MM
+44,47,Shennan,Catherine,Ictal high frequency oscillations distinguish two types of seizure territories in humans.,N,Weiss2013,M,67,W,98,MW
+45,48,Michael,Rafael,Acute Focal Seizures Start As Local Synchronizations of Neuronal Ensembles,N,Wenzel2019,M,99,M,99,MM
+46,49,Robert,Dimitri,Optogenetic and potassium channel gene therapy in a rodent model of focal neocortical epilepsy.,N,Wykes2012,M,99,M,99,MM
+47,50,Robert,Vincent,Optogenetic approaches to treat epilepsy,N,Wykes2016,M,99,M,99,MM
+48,51,Emre,Rainer,Reconstruction of firing rate changes across neuronal populations by temporally deconvolved Ca2+ imaging,N,Yaksi2006,M,97,M,99,MM
+49,52,Ofer,Karl,Optogenetics in Neural Systems,N,Yizhar2011,M,98,M,98,MM
+50,53,Chuanfang,Valeria,Transparent Flexible and Conductive 2D Titanium Carbide (MXene) Films with High Volumetric Capacitance,N,Zhang2017,M,100,W,98,MW
+51,54,Maeike,Jean,High-frequency oscillations as a new biomarker in epilepsy,N,Zijlmans2012,W,100,M,89,WM
+52,55,Jordan,Danielle,The extent and drivers of gender imbalance in neuroscience reference lists,N,Dworkin2020.01.03.894378,M,88,W,96,MW
+53,56,Daniel,Barbara,The gender citation gap in international relations,N,maliniak2013gender,M,99,W,98,MW
+54,57,Neven,Simon,Quantitative evaluation of gender bias in astronomical publications from citation counts,N,caplar2017quantitative,M,75,M,98,MM
+55,58,Paula,Charlton,\# CommunicationSoWhite,N,chakravartty2018communicationsowhite,W,98,M,99,WM
+56,59,Yannik,Rebecca,Just Ideas? The Status and Future of Publication Ethics in Philosophy: A White Paper,N,YannikThiemKrisF.SealeyAmyE.FerrerAdrielM.Trott2018,M,98,W,99,MW
+57,60,Michelle,Sara,Gendered citation patterns across political science and social science methodology fields,N,dion2018gendered,W,97,W,98,WW
+58,61,Dale,Danielle,Gender Diversity Statement and Code Notebook v1.0,N,zhou_dale_2020_3672110,M,93,W,96,MW
+59,62,Daniel,Sebastian,Learning the parts of objects by non-negative matrix factorization,N,Lee1999,M,99,M,99,MM
+60,63,Timothee,Wilson,Predicting the spatiotemporal diversity of seizure propagation and termination in human focal epilepsy,N,Proix2018,M,98,M,98,MM

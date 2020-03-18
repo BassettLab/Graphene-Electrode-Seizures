@@ -1,6 +1,10 @@
-plotgrid = 0; 
+function grp_plot_snapshot(F, C, trange, fastrange, Fs, fset, W, H, fid, wsort)
 
-ts = [500, 950, 1250, 2200, 3500, 4500];
+plotgrid = 0; 
+fs       = filesep; 
+srt      = trange(1); 
+
+ts = [500, 950, 1250, 2200, 3500, 4500];            % These are derived from the NMF analysis
 if plotgrid,    ts = fix(linspace(1,5000,36));   end
 
 for ti = 1:length(ts)
@@ -29,6 +33,7 @@ tif  	= imread([SZ fs tiflist{loadid}]);
 tif     = (single(tif) - avgmap)./semmap; 
 
 % Plot map of calcium amplitude
+%--------------------------------------------------------------------------
 if plotgrid,    subplot(ceil(length(ts)/6), 6, ti);
 else,           figure(ti), subplot(3,1,[1,2]);        end
 
@@ -37,6 +42,7 @@ colormap(flip(cbrewer('div', 'RdGy', 100))),
 imagesc(tif, [0 1200]);     hold on
 
 % Format 
+%--------------------------------------------------------------------------
 axis square
 title(['Plot timeframe no ' num2str(t)]); 
 set(gca, 'ydir', 'reverse')
@@ -80,7 +86,7 @@ if ~plotgrid
             xlim([-Inf Inf]); 
     end
 
-    [xc,lg]     = crosscorr(C(5).filt{1}(fastrange(t):fastrange(t)+Fs * 3), C(8).filt{1}(fastrange(t):fastrange(t)+Fs * 3));
+    [xc,lg]     = xcorr(C(5).filt{1}(fastrange(t):fastrange(t)+Fs * 3), C(8).filt{1}(fastrange(t):fastrange(t)+Fs * 3));
     [val, id]   = max(xc);
     subplot(3,1,3), title(num2str(['Lag between left and right edge: ' num2str(lg(id))])); 
 
@@ -89,7 +95,6 @@ if ~plotgrid
 
 end
 
-%%
 
 % Correlation weights 
 %--------------------------------------------------------------------------
@@ -97,7 +102,8 @@ featid  = find(strcmp(fset, 'hifc'));
 dum     = ones(length(C)); dum = zeros(length(C)) + triu(dum,1); dum = find(dum); 
 ddum    = zeros(16);
 zcut    = -.5;        % zscore cut off when looking across all weight loadings
-    
+wr      = size(W,2); 
+
 allw 	= W(find(fid == featid),:);
 allz    = reshape(zscore(allw(:)), size(allw)) > zcut;
 for s = 1:wr

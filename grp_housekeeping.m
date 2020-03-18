@@ -4,13 +4,18 @@ function F = grp_housekeeping
 
 fs          = filesep;
 F.base      = '/Volumes/GoogleDrive/My Drive/Research/1903 Mouse Calcium Data';
-F.scripts   = [F.base fs '00 - Scripts'];
-F.data      = [F.base fs '01 - Data'];
-F.analysis  = [F.base fs '02 - Analysis']; 
-F.ieeg      = '/Users/roschkoenig/Dropbox/Research/0002 Tools/IEEG';
-F.addpaths  = {'/Users/roschkoenig/Dropbox/Research/0002 Tools/Tools/cbrewer', 
-               '/Users/roschkoenig/Dropbox/Research/0002 Tools/Tools/cfc'
-                '/Users/roschkoenig/Dropbox/Research/0002 Tools/nmfv1_4'};
+F.scripts   = [F.base fs '00_Scripts'];
+F.data      = [F.base fs '01_Data'];
+F.analysis  = [F.base fs '02_Analysis']; 
+
+% These need editing <- probably include in the repo
+%--------------------------------------------------------------------------
+uname       = char(java.lang.System.getProperty('user.name'));
+F.ieeg      = ['/Users/' uname '/Dropbox/Research/0002 Tools/IEEG'];
+F.addpaths  = {['/Users/' uname '/Dropbox/Research/0002 Tools/Tools/cbrewer'] 
+               ['/Users/' uname '/Dropbox/Research/0002 Tools/Tools/cfc']
+               ['/Users/' uname '/Dropbox/Research/0002 Tools/nmfv1_4'] 
+               ['/Users/' uname '/Dropbox/Research/0002 Tools/spm']};
 
 F.pwdfile   = ['~/Documents/IEEG specs' fs 'ros_ieeglogin.bin'];   %% < This needs changing to your own file
 addpath(genpath(F.ieeg))

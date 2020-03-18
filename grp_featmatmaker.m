@@ -5,6 +5,7 @@ switch fset
     case 'all',     fset = {'plhg', 'lopow', 'hipow', 'lofc', 'hifc', 'eprox', 'ampl'};
     case 'reduced', fset = {'plhg', 'lopow', 'hipow', 'eprox', 'ampl'};
     case 'ephys',   fset = {'plhg', 'lopow', 'hipow', 'lofc', 'hifc'}; 
+    case 'calcium', fset = {'eprox', 'ampl'}; 
 end
 end
 

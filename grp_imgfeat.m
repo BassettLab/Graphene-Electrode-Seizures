@@ -12,7 +12,7 @@ for e = 1:size(edgm,1)
 	end
 end
 
-% Temporary solution to find location within the seizure
+% Calculating locally averaged calcium signal 
 %==========================================================================
 if ~exist('smtm'), load([F.analysis fs 'Wave map' fs 'Smooth.mat']); end
 disp('Calculating locally averaged calcium signal'); 

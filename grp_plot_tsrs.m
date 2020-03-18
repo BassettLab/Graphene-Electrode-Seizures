@@ -1,5 +1,5 @@
 function grp_plot_tsrs(C, IMG, trange, fastrange, Fs, dolong)
-
+figure
 % Plot example time series
 %--------------------------------------------------------------------------
 srtmin = 1.75; 

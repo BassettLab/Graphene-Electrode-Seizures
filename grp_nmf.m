@@ -1,4 +1,4 @@
-function [W,H,FMT,fid,fset,trange, fastrange] = grp_nmf(EPH, IMG, fcE, Fs, whichk, goodk)
+function [W,H,FMT,fid,fset,trange,fastrange,wsort] = grp_nmf(EPH, IMG, fcE, Fs, whichk, goodk, whichset)
 
 % This function puts together a feature matrix for running the non-negative
 % matrix factorisation, and then runs it either across a range of k-values
@@ -8,9 +8,7 @@ function [W,H,FMT,fid,fset,trange, fastrange] = grp_nmf(EPH, IMG, fcE, Fs, which
 %   goodk  - defines the finally chosen k 
 
 warning('off', 'all')
-
-whichk      = 0; 
-whichset    = 'all';
+% whichset    = 'all';
 
 mxid        = 5000; 
 [val, id]   = max(mean(vertcat(EPH.plhg)));
@@ -36,3 +34,18 @@ end
 %--------------------------------------------------------------------------
 rng(45)
 [W H i t r] = nmfnnls(FMT, goodk);
+
+
+% Find the time point with peak loading on factor and sort by that
+%--------------------------------------------------------------------------
+clear smH h
+
+for h = 1:size(H,1)
+    smH(h,:)    = smooth(H(h,:), 300);
+    [pks ids]   = findpeaks(double(smH(h,:)));
+    [val mid]   = max(pks);
+    id(h)       = ids(mid); 
+%     plot(smH(h,:), 'color', cols(h,:));     hold on
+%     plot([id(h), id(h)], [0, pks(mid)], 'color', cols(h,:)); 
+end
+[std wsort] = sort(id);

@@ -12,8 +12,10 @@ function [F, Fcor] = grp_ephysfeat(C)
 
 % Set up timing parameters
 %--------------------------------------------------------------------------
-Fs      = 5000; 
+% Fs      = C(1).Fs;  
 rnge    = 1:length(C(1).dat);
+
+% Identify starting points of each imaging frame (sampled at 10Hz)
 srts    = fix([rnge(1)/Fs : 0.1 : rnge(end)/Fs] * Fs); 
 dlen    = length(srts)-1; 
 doplt   = 0;
@@ -27,8 +29,9 @@ disp('Calculating phase locked high gamma');
 clear PL 
 for c = 1:length(C)
 
-    % Define filters and sampling rates
+    % Define filters and sampling rates 
     %----------------------------------------------------------------------
+    % Make sure to credit original code!!! (Weiss et al. 2013 Brain stuff)
     bp{1} = [4 30]; 
     bp{2} = [80 250]; 
     td = C(c).dat; 
@@ -44,18 +47,20 @@ for c = 1:length(C)
     
     % Calculate phase of low frequencies and envelope phase of high freq
     %----------------------------------------------------------------------
-    lphase = atan2(imag(hlb{1}), real(hlb{1}));
-    envhlb = hilbert(amplo{2}); 
-    phsamp = atan2(imag(envhlb), real(envhlb)); 
+    lphase = atan2(imag(hlb{1}), real(hlb{1})); % LFP signal phase
+    envhlb = hilbert(amplo{2});                 % Hilbert transform on high gamma envelope (instantaneous amplitude)
+    phsamp = atan2(imag(envhlb), real(envhlb)); % High Gamma envelope phase
 
-    % Sliding windo calculate phase locked high gamma (normalised by
+    % Sliding window to calculate phase locked high gamma (normalised by
     % baseline)
     %----------------------------------------------------------------------
-    win     = 3 * Fs;
-    ntrials = fix(length(df{1}) / win);
+    % Richard to change this into a higher frequency sampling (akin to
+    % imaging)
+    win     = 3 * Fs;                       % 3 second window 
+    nwin = fix(length(df{1}) / win); 
     clear plv plhg
-    for n = 1:ntrials
-        sid     = [1:win] + (n-1)*win;
+    for n = 1:nwin
+        sid     = [1:win] + (n-1)*win;      % sample ids that belong to the window 
         i       = sqrt(-1);
         plv(n)  = abs(mean(exp(i*(lphase(sid) - phsamp(sid)))));
         plhg(n) = abs(mean(amplo{2}(sid).*exp(i*(lphase(sid) - phsamp(sid)))));
@@ -69,44 +74,46 @@ for c = 1:length(C)
 
 end
 
-% Ictal spikes
-%--------------------------------------------------------------------------
-% Ictal spike frequency and amplitude
-%--------------------------------------------------------------------------
-disp('Calculating ictal spika amplitude and frequency'); 
-clear spks ampl smspk smamp
-for c = 1:16
-[z , mu, sig]   = zscore(C(c).filt{1}); 
-[pks loc]       = findpeaks(mu-C(c).filt{1}(rnge));
-loc             = loc(pks > 5 * sig); 
-pks             = pks(pks > 5 * sig); 
-
-for t = 1:length(srts)-1
-    td      = C(c).filt{1}(srts(t):srts(t+1)-1);
-    spks(c,t) = length(intersect(find(loc >= srts(t)), find(loc < srts(t+1))));
-    ampl(c,t) = max(td) - min(td); 
-end
-
-smamp(c,:) = smooth(ampl(c,:), 50); 
-smspk(c,:) = smooth(spks(c,:), 50); 
-
-F(c).spamp = smamp(c,:);
-F(c).spcnt = smspk(c,:); 
-
-end
+% % Ictal spikes
+% %--------------------------------------------------------------------------
+% % Ictal spike frequency and amplitude
+% %--------------------------------------------------------------------------
+% disp('Calculating ictal spika amplitude and frequency'); 
+% clear spks ampl smspk smamp
+% for c = 1:16
+% [z , mu, sig]   = zscore(C(c).filt{1}); 
+% [pks loc]       = findpeaks(mu-C(c).filt{1}(rnge));
+% loc             = loc(pks > 5 * sig); 
+% pks             = pks(pks > 5 * sig); 
+% 
+% for t = 1:length(srts)-1
+%     td      = C(c).filt{1}(srts(t):srts(t+1)-1);
+%     spks(c,t) = length(intersect(find(loc >= srts(t)), find(loc < srts(t+1))));
+%     ampl(c,t) = max(td) - min(td); 
+% end
+% 
+% smamp(c,:) = smooth(ampl(c,:), 50); 
+% smspk(c,:) = smooth(spks(c,:), 50); 
+% 
+% F(c).spamp = smamp(c,:);
+% F(c).spcnt = smspk(c,:); 
+% 
+% end
 
 % Bandpower
 %--------------------------------------------------------------------------
 disp('Calculating Bandpower'); 
-for c = 1:length(C)
-    amplo = abs(hilbert(C(c).filt{1})); 
-    amphi = abs(hilbert(C(c).filt{2}));
+for c = 1:length(C)     % Looping through channels 
+    amplo = abs(hilbert(C(c).filt{1}));     % LFP range amplitude derived from Hilberr transform
+    amphi = abs(hilbert(C(c).filt{2}));     % High gamma range ampl derived from Hilbert transform
+    
     F(c).lopow = 0;
     F(c).hipow = 0; 
-    win     = 3 * Fs;
-    ntrials = fix(length(df{1}) / win);
-    for n = 1:ntrials
-        sid  = [1:win] + (n-1)*win;
+    
+    win     = 3 * Fs;                       % Richard to make more steps as above
+    nwin = fix(length(df{1}) / win);                   
+    for n = 1:nwin                          % Loop through all windows 
+        sid  = [1:win] + (n-1)*win;         
         ld = amplo(sid); 
         hd = amphi(sid); 
         F(c).lopow(n) = mean(ld); 
@@ -121,19 +128,24 @@ end
 % Functional network
 %--------------------------------------------------------------------------
 disp('Calculating functional network edges'); 
-dum     = ones(length(C)); dum = zeros(length(C)) + triu(dum,1); dum = find(dum); 
-win     = 3 * Fs;
-ntrials = fix(length(df{1}) / win);
+
+% Dummy to find indices for unique channel pairings / edges 
+%--------------------------------------------------------------------------
+dum     = ones(length(C)); dum = triu(dum,1); dum = find(dum); 
+win     = 3 * Fs;   % 3 second sliding window - Richard to adapt
+nwin = fix(length(df{1}) / win);
 clear Fcor
 
-for f = 1:2
+for f = 1:2     % Loop through two frequency bands 
     dat = []; fcor    = []; 
+    % loop over channels to pull out data
     for c = 1:length(C),    dat = [dat; C(c).filt{f}];      end;    dat = dat';
 
-    for n = 1:ntrials
-        sid     = [1:win] + (n-1)*win;
-        cd      = corr(dat(sid, :));
-        fcor    = [fcor, cd(dum)]; 
+    % Sliding window 
+    for n = 1:nwin
+        sid     = [1:win] + (n-1)*win;  % Sample IDs
+        cd      = corr(dat(sid, :));    % Correlation matrix between channels 
+        fcor    = [fcor, cd(dum)];      % Save unique edges (upper triangle) as single column in fcor matrix
     end
     
     clear Fc

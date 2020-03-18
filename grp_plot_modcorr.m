@@ -1,6 +1,6 @@
 function grp_plot_modcorr(FMT,fset,fid)
-
-doscatter = 0; 
+figure
+doscatter = 1; 
 
 % Plot correlation between modalities
 %--------------------------------------------------------------------------
@@ -24,10 +24,10 @@ end
 yl = [min(am(:)), .7];
 xl = [min(lo(:)), max(lo(:))]; 
 
-if doscatter,   
-    subplot(2,1,2)
+if doscatter   
+subplot(2,1,2)
     for c = 1:size(lo,1)
-        scatter(lo(c,:), am(c,:), 200, cols, 'filled', 'markerfacealpha', .02), hold on;
+        scatter(lo(c,:), am(c,:), 10, cols, 'filled', 'markerfacealpha', 1), hold on;
 
     end
     axis square
@@ -36,7 +36,6 @@ if doscatter,
     
     subplot(2,1,1);     
 end
-
 lrange = linspace(min(lo(:)),max(lo(:)),size(m,1)); 
 arange = linspace(min(am(:)),max(am(:)),size(m,2));
 imagesc(lrange,arange,imgaussfilt(m', 30), [0 60]);

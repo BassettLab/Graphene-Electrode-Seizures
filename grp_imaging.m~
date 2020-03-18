@@ -47,13 +47,13 @@ end
 
 % Loop through tmaps and apply threshold to detect edge
 %--------------------------------------------------------------------------
-llim = 350;  % <-- This threshold is chosen to be specific to ictal transition  
-gflt = 15;   % <-- width of the gaussian image filter, arbitrary
+llim = 350;  % <-- This threshold is pretty arbitrary atm
+gflt = 15;   % <-- width of the gaussian image filter, also arbitrary(ish)
 
 clear binm edgm
 for t = 1:size(ttif,1)
     if mod(t,250) == 0, disp(['Processed image ' num2str(t) ' of ' num2str(samps) ' - ' datestr(datetime(now,'ConvertFrom','datenum'))]);   end
-    SM = imgaussfilt(squeeze(ttif(t,:,:)), gflt); 
+    SM = imgaussfilt(squeeze(ttif(t,:,:)), 15); 
     BN = zeros(size(SM));   BN(SM > llim) = 1; 
     ED = logical(edge(BN)); 
     BN = logical(BN); 
