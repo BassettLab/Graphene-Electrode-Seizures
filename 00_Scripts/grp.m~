@@ -2,6 +2,7 @@
 %==========================================================================
 % This code contains analysis code to run the analysis on graphene, steps
 % of this can be run by toggling on or off the following variables
+% 
 
 % Getting EEG Datafeatures
 %--------------------------------------------------------------------------
