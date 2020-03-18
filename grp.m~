@@ -5,12 +5,12 @@
 
 % Getting EEG Datafeatures
 %--------------------------------------------------------------------------
-pullieeg = 0;       % Downloads EEG data from IEEG portal
+pullieeg = 1;       % Downloads EEG data from IEEG portal
 physfeat = 0;       % Estimates neurophysiology derived data features
 
 % Getting Calcium Imaging Datafeatures
 %--------------------------------------------------------------------------
-estwave = 0;        % Identify seizure core and travelling wave front  
+estwave = 1;        % Identify seizure core and travelling wave front  
 getfeat = 0;        % Translate wave dynamics to features for further analysis
 
 % Run NMF
