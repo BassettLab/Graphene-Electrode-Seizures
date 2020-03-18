@@ -3,12 +3,24 @@
 % This code contains analysis code to run the analysis on graphene, steps
 % of this can be run by toggling on or off the following variables
 
-% Getting EEG Datafeatures
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%% Manual Definitions Required Below %%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Base folder                           <- Change to your local paths
 %--------------------------------------------------------------------------
-pullieeg = 0;       % Downloads EEG data from IEEG portal
+F.base = '/Volumes/GoogleDrive/My Drive/Research/1903 Mouse Calcium Data/Graphene_Seizure_Mapping';
+F.ieeg = ['/Users/roschkoenig/Dropbox/Research/0002 Tools/IEEG']; 
+%   ^-- only required if IEEG portal download (pullieeg) required
+
+% Getting EEG Datafeatures              <- Define electrophys processing  
+%--------------------------------------------------------------------------
+pullieeg = 1;       % Downloads EEG data from IEEG portal
 physfeat = 0;       % Estimates neurophysiology derived data features
 
-% Getting Calcium Imaging Datafeatures
+% Getting Calcium Imaging Datafeatures  <- Define imaging processing
 %--------------------------------------------------------------------------
 estwave = 1;        % Identify seizure core and travelling wave front  
 getfeat = 0;        % Translate wave dynamics to features for further analysis
@@ -30,11 +42,16 @@ runnmf  = 1;        % run the combined non-negative matrix factorisation
 
 plots = [7];
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 % Housekeeping
 %==========================================================================
 fs          = filesep;              
-F           = grp_housekeeping;     % This needs editing - base; cbrewer, cfc, nmfv1_4, spm, IEEG stuff
-% Fs          = 5000;                 % EEG sampling frequency
+F           = grp_housekeeping(F);
 
 % Running actual analysis
 %==========================================================================

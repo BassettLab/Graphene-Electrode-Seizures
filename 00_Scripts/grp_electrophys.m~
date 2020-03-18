@@ -96,8 +96,8 @@ end
 % Bandpass filter into set frequency bands
 %--------------------------------------------------------------------------
 for f = 1:length(fbp)
-    fdat{f}     = bandpass(ndat', fbp{f}, Fs, 'Steepness', 0.9)'; 
-    fbdat{f}    = bandpass(nbdat', fbp{f}, Fs, 'Steepness', 0.9)'; 
+    fdat{f}     = bandpass(flt, ndat')'; 
+    fbdat{f}    = bandpass(flt, nbdat')'; 
 end
 
 % Reattach filtered data to the Channel object

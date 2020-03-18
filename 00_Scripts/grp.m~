@@ -2,14 +2,21 @@
 %==========================================================================
 % This code contains analysis code to run the analysis on graphene, steps
 % of this can be run by toggling on or off the following variables
-% 
 
-% Getting EEG Datafeatures
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%% Manual Definitions Required Below %%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Base folder                           <- Change to your base path 
+%--------------------------------------------------------------------------
+base     = '/Volumes/GoogleDrive/My Drive/Research/1903 Mouse Calcium Data/Graphene_Seizure_Mapping';
+
+% Getting EEG Datafeatures              <- Define electrophys processing  
 %--------------------------------------------------------------------------
 pullieeg = 1;       % Downloads EEG data from IEEG portal
 physfeat = 0;       % Estimates neurophysiology derived data features
 
-% Getting Calcium Imaging Datafeatures
+% Getting Calcium Imaging Datafeatures  <- Define imaging processing
 %--------------------------------------------------------------------------
 estwave = 1;        % Identify seizure core and travelling wave front  
 getfeat = 0;        % Translate wave dynamics to features for further analysis
@@ -34,7 +41,7 @@ plots = [7];
 % Housekeeping
 %==========================================================================
 fs          = filesep;              
-F           = grp_housekeeping;     % This needs editing - base; cbrewer, cfc, nmfv1_4, spm, IEEG stuff
+F           = grp_housekeeping(base); % This needs editing - base; cbrewer, cfc, nmfv1_4, spm, IEEG stuff
 % Fs          = 5000;                 % EEG sampling frequency
 
 % Running actual analysis
