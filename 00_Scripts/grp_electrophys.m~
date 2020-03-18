@@ -86,18 +86,20 @@ bdat    = horzcat(C.bas)';
 %--------------------------------------------------------------------------
 clear fdat
 
-             
+disp('Applying notch filtering to the data')             
 ndat = dat;     nbdat = bdat;   % ndat - notch filtered data;
-for m = 1:5     % filtering for multiple harmonics of line noise 
-    ndat    = bandstop(ndat', [60*m-1, 60*m+1], Fs, 'Steepness', 0.9)';
-    nbdat   = bandstop(nbdat', [60*m-1, 60*m+1], Fs, 'Steepness', 0.9)';
+for m = 1:5     % filtering for multiple harmonics of line noise
+    disp(['Harmonic ' num2str(m) ': ' num2str(60*m) 'Hz'])
+    ndat    = bandstop(ndat', [60*m-1, 60*m+1], Fs, 'Steepness', 0.75)';
+    nbdat   = bandstop(nbdat', [60*m-1, 60*m+1], Fs, 'Steepness', 0.75)';
 end
 
 % Bandpass filter into set frequency bands
 %--------------------------------------------------------------------------
 for f = 1:length(fbp)
-    fdat{f}     = bandpass(flt, ndat')'; 
-    fbdat{f}    = bandpass(flt, nbdat')'; 
+    disp(['Applying bandpass filter: ' num2str(fbp{f}(1)) ' to 'num2str(fbp{f}(2)) 'Hz'])  
+    fdat{f}     = bandpass(ndat', fbp{f}, Fs, 'Steepness', 0.75)'; 
+    fbdat{f}    = bandpass(nbdat', fbp{f}, Fs, 'Steepness', 0.75)'; 
 end
 
 % Reattach filtered data to the Channel object
