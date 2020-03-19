@@ -17,13 +17,13 @@ F.ieeg = ['/Users/roschkoenig/Dropbox/Research/0002 Tools/IEEG'];
 
 % Getting EEG Datafeatures              <- Define electrophys processing  
 %--------------------------------------------------------------------------
-pullieeg = 1;       % Downloads EEG data from IEEG portal
-physfeat = 0;       % Estimates neurophysiology derived data features
+pullieeg = 0;       % Downloads EEG data from IEEG portal
+physfeat = 1;       % Estimates neurophysiology derived data features
 
 % Getting Calcium Imaging Datafeatures  <- Define imaging processing
 %--------------------------------------------------------------------------
-estwave = 1;        % Identify seizure core and travelling wave front  
-getfeat = 0;        % Translate wave dynamics to features for further analysis
+estwave = 0;        % Identify seizure core and travelling wave front  
+getfeat = 1;        % Translate wave dynamics to features for further analysis
 
 % Run NMF
 %--------------------------------------------------------------------------
@@ -42,11 +42,8 @@ runnmf  = 1;        % run the combined non-negative matrix factorisation
 
 plots = [7];
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 
 % Housekeeping
 %==========================================================================
@@ -69,7 +66,7 @@ if getfeat,     IMG = grp_imgfeat(C, F);    end
 % Matrix decomposition
 %--------------------------------------------------------------------------
 if runnmf 
-    [W,H,FMT,fid,fset,trange,fastrange,wsort] = grp_nmf(EPH,IMG,fcE,C(1).Fs,1,6,'all');     
+    [W,H,FMT,fid,fset,trange,fastrange,wsort] = grp_nmf(EPH,IMG,fcE,C(1).Fs,0,6,'all');     
 end
 
 % Plotting functions (use the if statements as toggles)
@@ -78,11 +75,11 @@ for p = plots
 switch p
     case 1, grp_plot_nmf(W,H,C,trange,fastrange,fset,fid,wsort);    
     case 2, grp_plot_traj(F,trange,H,wsort);                    
-    case 3, grp_plot_spike(C, H, wsort, fastrange, Fs, 9);          
-    case 4, grp_plot_tsrs(C, IMG, trange, fastrange, Fs, 0);   
+    case 3, grp_plot_spike(C, H, wsort, fastrange, C(1).Fs, 9);          
+    case 4, grp_plot_tsrs(C, IMG, trange, fastrange, C(1).Fs, 0);   
     case 5, grp_plot_edgemap(F, trange);     
-    case 6, grp_plot_snapshot(F,C,trange, fastrange, Fs, fset, W, H, fid, wsort);
-    case 7, grp_plot_physstats(C,H,Fs,fastrange,wsort,{'isi', 'spike correlation'}, 3); 
+    case 6, grp_plot_snapshot(F,C,trange, fastrange, C(1).Fs, fset, W, H, fid, wsort);
+    case 7, grp_plot_physstats(C,H,C(1).Fs,fastrange,wsort,{'isi', 'spike correlation'}, 3); 
 end
 end
 

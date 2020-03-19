@@ -1,5 +1,4 @@
 function grp_plot_snapshot(F, C, trange, fastrange, Fs, fset, W, H, fid, wsort)
-
 plotgrid = 0; 
 fs       = filesep; 
 srt      = trange(1); 
@@ -50,8 +49,11 @@ xlim([0 512]);
 ylim([0 512]); 
 colorbar
 
-if ~plotgrid
+seq = flip(cbrewer('div', 'PuOr', 6)); 
+seq = seq([1 2 5 6],:); 
 
+
+if ~plotgrid
     % Find and plot
     edgi = find(squeeze(edgm(loadid,:,:)));  
     [r, c] = ind2sub([size(edgm,2), size(edgm,3)], edgi);

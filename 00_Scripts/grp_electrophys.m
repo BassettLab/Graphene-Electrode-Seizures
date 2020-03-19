@@ -104,6 +104,7 @@ end
 
 % Reattach filtered data to the Channel object
 %--------------------------------------------------------------------------
+
 for f = 1:length(fdat)
 for c = 1:length(C)
     C(c).filt{f} = fdat{f}(c,:); 

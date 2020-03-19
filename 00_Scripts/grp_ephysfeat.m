@@ -12,7 +12,7 @@ function [F, Fcor] = grp_ephysfeat(C)
 
 % Set up timing parameters
 %--------------------------------------------------------------------------
-% Fs      = C(1).Fs;  
+Fs      = C(1).Fs;  
 rnge    = 1:length(C(1).dat);
 
 % Identify starting points of each imaging frame (sampled at 10Hz)
@@ -22,8 +22,8 @@ doplt   = 0;
 
 %% Phase locked high gamma
 %--------------------------------------------------------------------------
-% Calculating phase locked high gamma (refiltering to reproduce Weiss et al
-% method completely
+% Calculating phase locked high gamma - this code is based on work by Dr
+% Shennan Aibel-Weiss (Ictal  Map v0.1, developed 2011-14)
 
 disp('Calculating phase locked high gamma'); 
 clear PL 
@@ -31,10 +31,9 @@ for c = 1:length(C)
 
     % Define filters and sampling rates 
     %----------------------------------------------------------------------
-    % Make sure to credit original code!!! (Weiss et al. 2013 Brain stuff)
-    bp{1} = [4 30]; 
-    bp{2} = [80 250]; 
-    td = C(c).dat; 
+    bp{1}   = [4 30]; 
+    bp{2}   = [80 250]; 
+    td      = C(c).dat; 
 
     % Calculate hilbert transform instantaneous amplitude
     %----------------------------------------------------------------------
@@ -42,7 +41,7 @@ for c = 1:length(C)
     ft{b}   = fir1(1000, [bp{b}(1)/(Fs/2), bp{b}(2)/(Fs/2)]); 
     df{b}   = filtfilt(ft{b}, 1, td); 
     hlb{b}  = hilbert(df{b});
-    amplo{b}  = abs(hlb{b});      % Missing out a normalisation step here not sure I need it
+    amplo{b}  = abs(hlb{b});  
     end
     
     % Calculate phase of low frequencies and envelope phase of high freq
@@ -56,6 +55,7 @@ for c = 1:length(C)
     %----------------------------------------------------------------------
     % Richard to change this into a higher frequency sampling (akin to
     % imaging)
+    
     win     = 3 * Fs;                       % 3 second window 
     nwin = fix(length(df{1}) / win); 
     clear plv plhg
