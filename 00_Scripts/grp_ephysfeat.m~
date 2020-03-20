@@ -38,7 +38,7 @@ for c = 1:length(C)
 
     % Calculate hilbert transform instantaneous amplitude
     %----------------------------------------------------------------------
-    clear ft df hlb amplo
+    
     for b = 1:2
     ft{b}   = fir1(1000, [bp{b}(1)/(Fs/2), bp{b}(2)/(Fs/2)]); 
     df{b}   = filtfilt(ft{b}, 1, td); 
